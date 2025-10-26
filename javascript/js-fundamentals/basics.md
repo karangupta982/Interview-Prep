@@ -1,4 +1,4 @@
-## **Day 1 — Basics, Variables & Data Types**
+## **Basics, Variables & Data Types**
 
 **Topics:**
 
