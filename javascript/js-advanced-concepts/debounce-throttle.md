@@ -146,3 +146,41 @@ window.addEventListener("scroll", throttledScroll);
 | **Example**    | Search input API call                 | Scroll position logging                          |
 | **Behavior**   | Executes once after delay             | Executes at every fixed interval                 |
 | **Goal**       | Limit execution until calm            | Limit execution frequency                        |
+
+---
+
+## **5. Combined Visualization**
+
+Imagine typing “apple” with a 1000ms delay:
+
+| Keystroke | Time  | Debounce           | Throttle             |
+| --------- | ----- | ------------------ | -------------------- |
+| a         | 0ms   | —                  | Runs                 |
+| p         | 200ms | —                  | Skipped              |
+| p         | 400ms | —                  | Skipped              |
+| l         | 600ms | —                  | Skipped              |
+| e         | 800ms | **Runs at 1800ms** | Runs again at 1000ms |
+
+So:
+
+* **Debounce** → executes **once after typing stops**
+* **Throttle** → executes **periodically while typing**
+
+---
+
+## **6. Real-Life Analogy**
+
+| Concept      | Analogy                                                          |
+| ------------ | ---------------------------------------------------------------- |
+| **Debounce** | Waiting for someone to finish talking before replying            |
+| **Throttle** | Nodding your head every few seconds while listening continuously |
+
+---
+
+## **7. Summary**
+
+| Concept      | Execution                         | Ideal Use                       |
+| ------------ | --------------------------------- | ------------------------------- |
+| **Debounce** | After inactivity                  | Search bar, form input          |
+| **Throttle** | At regular intervals              | Scroll, resize, mousemove       |
+| **Goal**     | Reduce unnecessary function calls | Control function execution rate |
