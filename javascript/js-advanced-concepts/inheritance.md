@@ -88,3 +88,153 @@ console.log(p2.xp2); // "I am inside p2"
 ```
 
 This is a clean and preferred way to set prototypes (instead of using `__proto__` directly).
+
+---
+
+## **5. The Prototype Chain**
+
+Every object has a prototype, and that prototype may also have a prototype — forming a **prototype chain**.
+
+Example:
+
+```
+p3 → p2 → p1 → Object.prototype → null
+```
+
+When searching for a property, JavaScript traverses this chain until it finds the property or reaches `null`.
+
+---
+
+## **6. `prototype` vs `__proto__`**
+
+| Property    | Belongs To                   | Description                                                                                      |
+| ----------- | ---------------------------- | ------------------------------------------------------------------------------------------------ |
+| `__proto__` | Object instance              | Refers to the prototype of that particular object.                                               |
+| `prototype` | Constructor function / Class | A property that defines what will become the prototype of instances created by that constructor. |
+
+### **Example**
+
+```javascript
+function Student(name) {
+  this.name = name;
+}
+
+Student.prototype.sayHello = function() {
+  console.log(`Hello, I am ${this.name}`);
+};
+
+const s1 = new Student("Karan");
+
+console.log(s1.__proto__ === Student.prototype); // true
+s1.sayHello(); // Hello, I am Karan
+```
+
+* `Student.prototype` → defines the shared behavior of all Student instances.
+* `s1.__proto__` → points to `Student.prototype`.
+
+---
+
+## **7. Class Syntax (ES6)**
+
+JavaScript classes are just **syntactic sugar** over the prototype system.
+They make the syntax cleaner and more familiar for developers from other languages.
+
+### **Example**
+
+```javascript
+class Student {
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayHello() {
+    console.log(`Hello, I am ${this.name}`);
+  }
+}
+
+const s2 = new Student("Gupta");
+s2.sayHello(); // Hello, I am Gupta
+
+console.log(s2.__proto__ === Student.prototype); // true
+```
+
+---
+
+## **8. Inheritance in JavaScript**
+
+We can create **class inheritance** using the `extends` keyword.
+
+### **Example**
+
+```javascript
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  greet() {
+    console.log(`Hi, I'm ${this.name}`);
+  }
+}
+
+class Student extends Person {
+  constructor(name, roll) {
+    super(name); // calls parent class constructor
+    this.roll = roll;
+  }
+
+  showRoll() {
+    console.log(`My roll number is ${this.roll}`);
+  }
+}
+
+const student1 = new Student("Karan", 21);
+student1.greet();      // Hi, I'm Karan
+student1.showRoll();   // My roll number is 21
+```
+
+---
+
+## **9. Behind the Scenes (Prototype Chain in Classes)**
+
+```
+student1 → Student.prototype → Person.prototype → Object.prototype → null
+```
+
+That’s the internal prototype chain built automatically when you use `extends`.
+
+---
+
+## **10. Summary**
+
+| Concept           | Description                                                    |
+| ----------------- | -------------------------------------------------------------- |
+| Prototype         | Object from which others inherit properties                    |
+| `__proto__`       | Reference to an object’s prototype                             |
+| `prototype`       | Property on constructor function used to define shared methods |
+| `Object.create()` | Creates object with specific prototype                         |
+| Inheritance       | One object or class deriving from another                      |
+| Class             | ES6 syntax built on top of prototypes                          |
+
+---
+
+### **Interview Questions**
+
+1. **What is the difference between `__proto__` and `prototype`?**
+
+   * `__proto__` is a property of an **object instance**.
+   * `prototype` is a property of a **constructor function or class**.
+
+2. **How does inheritance work in JavaScript?**
+
+   * Each object has a link (`__proto__`) to another object (its prototype).
+   * Property lookup continues up the chain until found or `null`.
+
+3. **What is the prototype chain end?**
+
+   * Always ends with `Object.prototype`, whose prototype is `null`.
+
+4. **How do classes implement inheritance in JavaScript?**
+
+   * Using `extends` keyword and `super()` to call the parent constructor.
+
