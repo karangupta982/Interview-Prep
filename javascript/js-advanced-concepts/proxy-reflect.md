@@ -149,3 +149,48 @@ Reflect ensures safe, built-in behavior — so `Proxy` and `Reflect` work togeth
 | **Type**     | Constructor function                    | Built-in static object                         |
 | **Use Case** | Create custom behaviors                 | Call default operations inside Proxy traps     |
 | **Example**  | Custom validation, logging              | Maintain consistency with standard JS behavior |
+
+---
+
+## **4. Real-world Use Cases**
+
+1. **Validation** — Ensuring correct data types or value ranges.
+2. **Data Binding / Reactive Frameworks** — Vue.js 3 uses Proxy for reactivity.
+3. **Access Control / Security Layers** — Restrict sensitive properties.
+4. **Logging and Debugging** — Track changes to objects.
+5. **Virtualization** — Simulate objects or APIs.
+
+---
+
+## **5. Example: Access Control System**
+
+```js
+const employee = {
+  id: 1,
+  name: "Karan",
+  salary: 80000
+};
+
+const secureProxy = new Proxy(employee, {
+  get(target, prop, receiver) {
+    if (prop === "salary") {
+      throw new Error("Access Denied!");
+    }
+    return Reflect.get(target, prop, receiver);
+  }
+});
+
+console.log(secureProxy.name);   // Karan
+// console.log(secureProxy.salary); // Error: Access Denied!
+```
+
+---
+
+## **6. Summary**
+
+| Concept                  | Description                                                         |
+| ------------------------ | ------------------------------------------------------------------- |
+| **Proxy**                | Wraps an object and intercepts operations                           |
+| **Reflect**              | Provides default, safe methods for those operations                 |
+| **Together**             | Used to create controlled, extensible object behavior               |
+| **Common in Frameworks** | Vue 3, MobX, and some React state managers use Proxy for reactivity |
