@@ -30,7 +30,7 @@
 
 ---
 
-### 1. **Dynamically Typed**
+### **Dynamically Typed**
 - In JavaScript, **you don’t declare variable types** (like `int`, `string`, etc.) explicitly.  
 - The type is **determined at runtime**, based on the value currently stored in the variable.  
 - And yes — you can **change the type of a variable dynamically** by assigning a new value of a different type.
@@ -41,7 +41,125 @@ let x = 10;       // x is a number
 x = "Hello";      // now x is a string
 x = true;         // now x is a boolean
 ```
-✅ No error — JavaScript allows it.
+No error — JavaScript allows it.
+
+---
+
+## `{}` → **Object Literals**
+
+An **object literal** is a simple way to create an object directly using curly braces `{}`.
+
+```js
+let person = {
+  name: "Karan",
+  age: 22,
+  city: "Gwalior"
+};
+```
+
+* Each property is written as `key: value`.
+* You can access properties using:
+
+  ```js
+  console.log(person.name);  // "Karan"
+  console.log(person["age"]); // 22
+  ```
+
+So `{}` is the **object literal syntax** used to define objects directly.
+
+---
+
+## `` ` ` `` → **Template Literals**
+
+Template literals (introduced in ES6) are strings enclosed in **backticks** (`` ` ``) that allow:
+
+1. **String Interpolation** – embed variables or expressions directly using `${}`.
+2. **Multi-line Strings** – write strings across multiple lines easily.
+
+### Example
+
+```js
+let name = "Karan";
+let age = 22;
+
+let message = `My name is ${name} and I am ${age} years old.`;
+console.log(message);
+```
+
+Output:
+
+```
+My name is Karan and I am 22 years old.
+```
+
+They are more flexible than normal quotes (`' '` or `" "`).
+
+---
+
+## JavaScript Is **Synchronous** and **Single-Threaded**
+
+### (a) **Single-Threaded**
+
+* JavaScript executes code in **a single thread**, meaning **one statement at a time**.
+* It has **one call stack**, and only one piece of code runs at any given moment.
+
+Example:
+
+```js
+console.log("Task 1");
+console.log("Task 2");
+console.log("Task 3");
+```
+
+Output will always be:
+
+```
+Task 1
+Task 2
+Task 3
+```
+
+---
+
+### (b) **Synchronous by Default**
+
+* JavaScript runs code **line by line**, waiting for one line to finish before moving to the next.
+
+However, it can **handle asynchronous operations** (like `setTimeout`, `fetch`, or Promises) using the **event loop** and **callback queue** — but the main thread still stays single.
+
+Example (mixing sync and async):
+
+```js
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Inside setTimeout");
+}, 0);
+
+console.log("End");
+```
+
+Output:
+
+```
+Start
+End
+Inside setTimeout
+```
+
+Even though `setTimeout` has 0 delay, it runs later because JavaScript is single-threaded and asynchronous tasks go through the event loop.
+
+---
+
+## Summary
+
+| Concept               | Description                                                       |
+| --------------------- | ----------------------------------------------------------------- |
+| `{}`                  | Object literal (used to create objects)                           |
+| `` ` ` ``             | Template literal (used for multi-line and interpolated strings)   |
+| Single-threaded       | Executes one statement at a time on a single call stack           |
+| Synchronous           | Executes code line by line, blocking the next line until done     |
+| Asynchronous behavior | Managed using event loop and callbacks, but still single-threaded |
 
 ---
 
