@@ -122,3 +122,108 @@ console.log(maxNum); // 10
 ```
 
 Here, `apply` spreads the array elements as arguments to `Math.max`.
+
+---
+
+## **4. bind()**
+
+### **Definition:**
+
+`bind()` does **not invoke the function immediately**.
+It **returns a new function** with the specified `this` value and optional arguments pre-set.
+
+### **Syntax:**
+
+```js
+const newFunc = functionName.bind(thisArg, arg1, arg2, ...);
+```
+
+---
+
+### **Example:**
+
+```js
+function greet(greeting) {
+  console.log(`${greeting}, ${this.name}`);
+}
+
+const person = { name: "Karan" };
+
+const greetKaran = greet.bind(person, "Hello");
+
+greetKaran(); // Hello, Karan
+```
+
+**Explanation:**
+
+* `bind` returns a new function (`greetKaran`)
+* You can call it later, and it remembers the bound `this` and arguments.
+
+---
+
+### **Use Case 3 – Fixing `this` in Event Handlers**
+
+```js
+const user = {
+  name: "Karan",
+  showName() {
+    console.log(this.name);
+  }
+};
+
+const button = document.getElementById("btn");
+button.addEventListener("click", user.showName.bind(user));
+```
+
+Without `.bind(user)`, `this` would refer to the button element instead of the `user` object.
+
+---
+
+## **5. Summary Table**
+
+| Method      | Invokes Immediately? | Arguments Format                 | Returns                         | Use Case                               |
+| ----------- | -------------------- | -------------------------------- | ------------------------------- | -------------------------------------- |
+| **call()**  | Yes                  | Individually (`arg1, arg2, ...`) | Return value of function        | Borrow methods, pass `this` explicitly |
+| **apply()** | Yes                  | As array (`[arg1, arg2, ...]`)   | Return value of function        | Use array arguments (e.g., `Math.max`) |
+| **bind()**  | No                   | Individually (`arg1, arg2, ...`) | New function with bound context | Event handlers, delayed execution      |
+
+---
+
+## **6. Real-Life Analogy**
+
+| Concept     | Analogy                                                                    |
+| ----------- | -------------------------------------------------------------------------- |
+| **call()**  | “Do this task now using this person’s context.”                            |
+| **apply()** | “Do this task now using this person’s context and these tools (in a box).” |
+| **bind()**  | “Prepare the task for later using this person’s context.”                  |
+
+---
+
+## **7. Example to Compare All Three**
+
+```js
+function introduce(city, country) {
+  console.log(`Hi, I'm ${this.name} from ${city}, ${country}.`);
+}
+
+const person = { name: "Karan" };
+
+introduce.call(person, "Bhopal", "India");   // Immediate
+introduce.apply(person, ["Bhopal", "India"]); // Immediate
+const boundFunc = introduce.bind(person, "Bhopal", "India");
+boundFunc(); // Later execution
+```
+
+---
+
+## **8. Interview Tip**
+
+A very common question:
+
+> What’s the difference between `call`, `apply`, and `bind`?
+
+**Answer:**
+
+> `call` and `apply` both invoke the function immediately —
+> the only difference is in how arguments are passed (`call` individually, `apply` as array).
+> `bind` returns a new function that can be executed later with the bound context.
