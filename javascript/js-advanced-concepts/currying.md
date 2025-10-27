@@ -79,3 +79,71 @@ console.log(add(1)(2)(3)); // 6
 ```
 
 Each function returns another function until the final argument is received.
+
+---
+
+## 5. Real-world Example
+
+Let’s say you need to log messages with different prefixes (like “Info”, “Error”, etc.):
+
+```js
+function log(type) {
+  return function(message) {
+    console.log(`[${type}] ${message}`);
+  }
+}
+
+const info = log("Info");
+const error = log("Error");
+
+info("Server started");     // [Info] Server started
+error("Server crashed");    // [Error] Server crashed
+```
+
+Now you can reuse `info` and `error` anywhere — clean and efficient.
+
+---
+
+## 6. Currying vs Partial Application
+
+| Concept                 | Description                                                     | Example                                                        |
+| ----------------------- | --------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Currying**            | Converts a multi-argument function into nested unary functions  | `f(a)(b)(c)`                                                   |
+| **Partial Application** | Fixes some arguments of a function and returns another function | `f(a, b, c)` → `f(a, b)` returns a new function that takes `c` |
+
+---
+
+## 7. Generic Currying Function
+
+You can write a **generic curry function** to convert any function into its curried version:
+
+```js
+function curry(fn) {
+  return function curried(...args) {
+    if (args.length >= fn.length) {
+      return fn(...args);
+    } else {
+      return function(...nextArgs) {
+        return curried(...args, ...nextArgs);
+      };
+    }
+  };
+}
+
+// Example usage:
+function add(a, b, c) {
+  return a + b + c;
+}
+
+const curriedAdd = curry(add);
+
+console.log(curriedAdd(1)(2)(3)); // 6
+console.log(curriedAdd(1, 2)(3)); // 6
+console.log(curriedAdd(1)(2, 3)); // 6
+```
+
+---
+
+**In short:**
+
+> Currying breaks a function with multiple parameters into smaller functions, each handling one parameter — allowing reusability, flexibility, and cleaner functional composition.
