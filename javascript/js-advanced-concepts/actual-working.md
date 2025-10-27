@@ -153,3 +153,73 @@ End
 Promise resolved
 Timeout
 ```
+
+**Explanation:**
+
+* `setTimeout` → goes to Web APIs → then to **callback queue**
+* `Promise` → goes to **microtask queue**
+* Event loop gives **priority** to microtasks → so promise executes before timeout.
+
+---
+
+## **5. Microtask Queue vs Callback Queue**
+
+| Queue Type                | Examples                                                               | Priority |
+| ------------------------- | ---------------------------------------------------------------------- | -------- |
+| **Microtask Queue**       | Promises, `queueMicrotask`, `async/await`                              | Higher   |
+| **Callback (Task) Queue** | `setTimeout`, `setInterval`, `setImmediate`, DOM events, I/O callbacks | Lower    |
+
+The **event loop** always checks the **microtask queue first**.
+Only after it’s empty does it process tasks from the callback queue.
+
+---
+
+### **Starvation**
+
+If microtasks continuously generate more microtasks, the callback queue never gets a chance to run — this is called **starvation**.
+
+Example:
+
+```javascript
+function loop() {
+  Promise.resolve().then(loop);
+}
+loop(); // Infinite microtasks → starvation
+```
+
+The event loop is stuck processing microtasks forever, never moving to callbacks.
+
+---
+
+## **6. Summary Diagram**
+
+```
+ ┌─────────────────────────────┐
+ │        Call Stack           │
+ │ Executes code line-by-line  │
+ └────────────┬────────────────┘
+              │
+      Web APIs (Browser)
+              │
+     ┌────────┴────────┐
+     │                 │
+ Callback Queue   Microtask Queue
+ (setTimeout etc.) (Promises etc.)
+     │                 │
+     └────────┬────────┘
+              ↓
+        Event Loop checks:
+        if stack is empty → push next task
+```
+
+---
+
+## **7. Interview Summary Points**
+
+* JavaScript runs in a **single thread** using the **call stack**.
+* **GEC** created first, then **FECs** for function calls.
+* **Hoisting** occurs in the memory creation phase.
+* `var` → undefined, `let` and `const` → TDZ.
+* **Event Loop** coordinates between the call stack and queues.
+* **Microtasks** (Promises) have higher priority than **callbacks** (setTimeout).
+* Continuous microtasks cause **starvation**.
