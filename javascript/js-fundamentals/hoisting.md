@@ -17,7 +17,7 @@ It refers to the time between when a variable is **declared** and when it is **i
 
 When JavaScript executes code:
 
-1. It **hoists** variable declarations (for `var`, `let`, and `const`) to the top of their scope.
+1. It **hoists** variable declarations (for `var`, `let`, and `const`) to the top of their scope. Functions with body are stored in the memory phase of global execution context.
 2. But **only `var`** variables are initialized with `undefined` during hoisting.
 3. **`let` and `const`** are hoisted but **not initialized** until the code execution reaches their declaration line.
 
