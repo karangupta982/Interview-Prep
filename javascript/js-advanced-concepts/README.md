@@ -24,3 +24,36 @@ Each topic is organized into a separate markdown file for better readability and
 | `settimeout-setinterval.md`    | Covers `setTimeout()`, `setInterval()`, and their interaction with the event loop.                             |
 | `strictmode.md`                | Explains "use strict" mode and its effect on JavaScript execution.                                             |
 | `weakmap-weakset.md`           | Covers WeakMap and WeakSet for managing object references efficiently.                                         |
+
+---
+
+## How to Use
+
+1. Open any markdown file to study a particular topic.
+2. Each file includes:
+
+   * Explanation of the concept
+   * Syntax
+   * Example code
+   * Common interview questions
+
+---
+
+## Topics Covered
+
+* Asynchronous JavaScript (Promises, Async/Await, Event Loop)
+* Object-Oriented Programming in JavaScript
+* Memory Management and Garbage Collection
+* Advanced DOM Event Handling
+* Performance Optimization (Debounce, Throttle)
+* Prototypal Inheritance
+* Proxy and Reflect
+* Strict Mode and Internal Working
+
+---
+
+## Ideal For
+
+* Developers preparing for JavaScript interviews
+* Learners aiming to strengthen core JavaScript understanding
+* Anyone who wants to master how JavaScript works internally
