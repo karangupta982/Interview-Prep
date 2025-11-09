@@ -85,3 +85,82 @@ console.log(delete undeclaredVar); // true
 ```
 
 > Note: In **strict mode**, assigning to an undeclared variable throws a `ReferenceError`.
+
+---
+
+## 4. Step-by-Step Explanation of the Example
+
+### Code:
+
+```js
+const name = "thanos";
+age = 24;
+
+console.log(delete name);
+console.log(delete age);
+```
+
+### Execution Breakdown:
+
+1. `const name = "thanos";`
+
+   * Declares a constant using `const`.
+   * Stored in the lexical environment (not a property of the global object).
+   * `delete name` tries to delete it, but constants are not configurable.
+   * **Output:** `false`.
+
+2. `age = 24;`
+
+   * No `var`, `let`, or `const` keyword.
+   * JavaScript (in non–strict mode) treats it as an **implicit global variable**.
+   * This creates a configurable property `age` on the global object.
+   * `delete age` successfully removes it.
+   * **Output:** `true`.
+
+### Output:
+
+```
+false
+true
+```
+
+---
+
+## 5. Strict Mode Behavior
+
+If `"use strict"` is enabled at the top of the script:
+
+```js
+"use strict";
+
+const name = "thanos";
+age = 24; // ReferenceError: age is not defined
+```
+
+In **strict mode**, assigning to an undeclared variable (`age`) is not allowed, so the second line throws an error before reaching the `delete` statements.
+
+---
+
+## 6. Summary Table
+
+| Declaration Type | Scope Type      | Attached to Global Object | Deletable | `delete` Result |
+| ---------------- | --------------- | ------------------------- | --------- | --------------- |
+| `var`            | Function/Global | Yes (non-configurable)    | ❌         | `false`         |
+| `let` / `const`  | Block           | No                        | ❌         | `false`         |
+| Implicit Global  | Global          | Yes (configurable)        | ✅         | `true`          |
+
+---
+
+## 7. Key Takeaways
+
+* `delete` removes **object properties**, not variables.
+* `var`, `let`, and `const` declarations are **not deletable**.
+* Implicitly declared globals (without `var`, `let`, `const`) **can be deleted** in non–strict mode.
+* Always use `"use strict"` to avoid creating unintended globals.
+
+---
+
+## References
+
+* [MDN Web Docs – delete operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete)
+* [MDN Web Docs – Variable scope](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Scope)
