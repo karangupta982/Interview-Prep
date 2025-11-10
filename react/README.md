@@ -233,3 +233,69 @@ Includes:
 * Avoiding unnecessary re-renders.
 * Profiling React apps.
 * Using key props correctly.
+
+---
+
+## 11. Advanced Topics
+
+* Higher Order Components (HOC)
+* Render Props
+* Controlled vs Uncontrolled Components
+* Portals
+* Error Boundaries
+* useImperativeHandle
+* Server-Side Rendering (SSR)
+
+---
+
+## 12. React Interview Questions
+
+Organized by difficulty:
+
+* Basic Questions (concepts, JSX, components)
+* Intermediate (hooks, lifecycle, rendering)
+* Advanced (performance, reconciliation, optimization)
+* Project-Based (API handling, state management, routing)
+
+Includes detailed answers and code snippets.
+
+---
+
+## 13. Best Practices
+
+* Use small, reusable components.
+* Use hooks instead of classes.
+* Keep UI logic separate from data logic.
+* Use keys in lists and fragments wisely.
+* Keep consistent folder and naming structure.
+* Prefer functional, declarative programming style.
+
+---
+
+## 14. Common Mistakes and Debugging
+
+* Forgetting cleanup in useEffect.
+* Incorrect dependency arrays.
+* Directly mutating state.
+* Using index as a key.
+* Infinite re-renders due to incorrect state updates.
+
+---
+
+## 15. Additional Resources
+
+* React Official Docs: [https://react.dev/](https://react.dev/)
+* Redux Toolkit Docs: [https://redux-toolkit.js.org/](https://redux-toolkit.js.org/)
+* React Router Docs: [https://reactrouter.com/](https://reactrouter.com/)
+* React Patterns: [https://reactpatterns.com/](https://reactpatterns.com/)
+* Frontend Interview Handbook: [https://frontendinterviewhandbook.com/](https://frontendinterviewhandbook.com/)
+
+---
+
+### Goal
+
+To create a **complete, developer-friendly React knowledge base** that helps in:
+
+* Learning React from scratch
+* Building real-world applications
+* Preparing for interviews confidently
