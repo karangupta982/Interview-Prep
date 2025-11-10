@@ -164,3 +164,72 @@ Explains all React hooks in-depth:
 
 Example hooks covered:
 `useState`, `useEffect`, `useContext`, `useRef`, `useMemo`, `useCallback`, `useReducer`, and custom hooks.
+
+---
+
+## 5. Lifecycle and Re-rendering
+
+Includes detailed explanation of:
+
+* Component mounting, updating, unmounting.
+* How React decides to re-render.
+* Difference between useEffect and useLayoutEffect.
+* Cleanup functions and dependency arrays.
+
+---
+
+## 6. React Context API
+
+Topics include:
+
+* Context creation and provider pattern.
+* Avoiding prop drilling.
+* Context vs Redux.
+* When Context should **not** be used.
+* Example: Theme and Authentication context.
+
+---
+
+## 7. Redux Toolkit
+
+Complete guide including:
+
+* `createSlice()`, `configureStore()`, `useDispatch`, and `useSelector`.
+* Understanding action → reducer → store flow.
+* Async logic with `createAsyncThunk`.
+* Comparison with Context API.
+* Example project for counter and authentication.
+
+---
+
+## 8. React Router
+
+Topics include:
+
+* BrowserRouter, Routes, Route.
+* useNavigate, useParams, useLocation.
+* Nested routing and layout routes.
+* Protected/private routes with authentication.
+* Navigation guards and redirects.
+
+---
+
+## 9. Handling API Calls and Async Logic
+
+* Using fetch or Axios for data fetching.
+* API integration with `useEffect`.
+* Handling loading, success, and error states.
+* Debouncing and throttling techniques.
+* Using Redux Toolkit Thunks for async flows.
+
+---
+
+## 10. Performance Optimization
+
+Includes:
+
+* React.memo, useMemo, and useCallback.
+* Code splitting with React.lazy().
+* Avoiding unnecessary re-renders.
+* Profiling React apps.
+* Using key props correctly.
