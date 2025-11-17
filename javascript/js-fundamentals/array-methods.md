@@ -181,6 +181,8 @@ console.log(arr.flat(2));
 
 ---
 
+# 14. Array slice()
+
 ## `slice()` — Extracts a Portion (Does Not Modify Original)
 
 ### Syntax
