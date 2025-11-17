@@ -1,10 +1,183 @@
 ## **Arrays & Methods**
 
-**Topics:**
+# 1. Array Length
 
-* Array Creation
-* Common Methods: `push`, `pop`, `shift`, `unshift`, `splice`, `slice`
-* Higher Order Methods: `map`, `filter`, `reduce`
+Returns the number of elements in an array.
+
+```js
+const arr = [10, 20, 30];
+console.log(arr.length); 
+// Output: 3
+```
+
+---
+
+# 2. Array toString()
+
+Converts an array to a comma-separated string.
+
+```js
+const arr = [1, 2, 3];
+console.log(arr.toString());
+// Output: "1,2,3"
+```
+
+---
+
+# 3. Array at()
+
+Returns element at a specific index (supports negative index).
+
+```js
+const arr = [10, 20, 30, 40];
+console.log(arr.at(2));  
+// Output: 30
+
+console.log(arr.at(-1)); 
+// Output: 40
+```
+
+---
+
+# 4. Array join()
+
+Joins array elements using a custom separator.
+
+```js
+const arr = ["Karan", "Gupta", "MERN"];
+console.log(arr.join(" - "));
+// Output: "Karan - Gupta - MERN"
+```
+
+---
+
+# 5. Array pop()
+
+Removes and returns the last element.
+
+```js
+const arr = [1, 2, 3];
+console.log(arr.pop()); 
+// Output: 3
+
+console.log(arr);
+// Output: [1, 2]
+```
+
+---
+
+# 6. Array push()
+
+Adds an element to the end; returns new length.
+
+```js
+const arr = [1, 2];
+console.log(arr.push(3)); 
+// Output: 3 (new length)
+
+console.log(arr);
+// Output: [1, 2, 3]
+```
+
+---
+
+# 7. Array shift()
+
+Removes and returns the first element.
+
+```js
+const arr = [10, 20, 30];
+console.log(arr.shift());
+// Output: 10
+
+console.log(arr);
+// Output: [20, 30]
+```
+
+---
+
+# 8. Array unshift()
+
+Adds elements at the beginning; returns new length.
+
+```js
+const arr = [20, 30];
+console.log(arr.unshift(10)); 
+// Output: 3 (new length)
+
+console.log(arr);
+// Output: [10, 20, 30]
+```
+
+---
+
+# 9. Array isArray()
+
+Checks if a value is an array.
+
+```js
+console.log(Array.isArray([1, 2, 3])); 
+// Output: true
+
+console.log(Array.isArray("hello")); 
+// Output: false
+```
+
+---
+
+# 10. Array delete()
+
+Deletes element at index (but leaves empty slot).
+
+```js
+const arr = [10, 20, 30];
+delete arr[1];
+
+console.log(arr);
+// Output: [10, empty, 30]
+```
+
+---
+
+# 11. Array concat()
+
+Merges multiple arrays; returns new array.
+
+```js
+const a = [1, 2];
+const b = [3, 4];
+
+console.log(a.concat(b));
+// Output: [1, 2, 3, 4]
+```
+
+---
+
+# 12. Array copyWithin()
+
+Copies array elements to another index in the same array.
+
+```js
+const arr = [1, 2, 3, 4, 5];
+console.log(arr.copyWithin(1, 3));
+// Copy from index 3 -> start at index 1
+// Output: [1, 4, 5, 4, 5]
+```
+
+---
+
+# 13. Array flat()
+
+Flattens nested arrays.
+
+```js
+const arr = [1, [2, [3, 4]]];
+console.log(arr.flat());
+// Output: [1, 2, [3, 4]]
+
+console.log(arr.flat(2));
+// Output: [1, 2, 3, 4]
+```
 
 ---
 
@@ -42,7 +215,10 @@ console.log(arr);  // [10, 20, 30, 40, 50]  (unchanged)
 arr.slice(-3); // last 3 elements → [30, 40, 50]
 ```
 
+
 ---
+
+# 15. Array splice()
 
 ## `splice()` — Adds, Removes, or Replaces (Modifies Original)
 
@@ -110,6 +286,26 @@ console.log(spliced);           // [2, 3, 4]
 * **`slice()`** → copies part of an array without changing it.
 * **`splice()`** → changes the array (add, remove, or replace elements).
 
+```
+
+---
+
+# 16. Array toSpliced()
+
+Same as splice() but **does NOT mutate** original array.
+
+```js
+const arr = [10, 20, 30, 40];
+
+const newArr = arr.toSpliced(1, 1, 99);
+
+console.log(newArr);
+// Output: [10, 99, 30, 40]
+
+console.log(arr);
+// Output: [10, 20, 30, 40] (original unchanged)
+```
+
 ---
 
 ```javascript
@@ -134,15 +330,15 @@ console.log("slice",nums.slice(1, 3)); // [2,4]
 
 // Higher Order Methods
 
-// 2️⃣ map
+// map
 const squared = nums.map(num => num * num);
 console.log(squared);
 
-// 3️⃣ filter
+// filter
 const evens = nums.filter(num => num % 2 === 0);
 console.log(evens);
 
-// 4️⃣ reduce
+// reduce
 const sum = nums.reduce((acc, curr) => acc + curr, 0);
 console.log(sum);
 ```
