@@ -68,3 +68,112 @@ function greet(name) {
 }
 // Error: Parameter 'name' implicitly has an 'any' type.
 ```
+
+Correct version:
+
+```ts
+function greet(name: string) {
+  console.log(name.toUpperCase());
+}
+```
+
+---
+
+## **6. Inference in Arrays**
+
+```ts
+let scores = [10, 20, 30];
+// inferred as number[]
+```
+
+Mixed-type arrays get inferred as a union type:
+
+```ts
+let mixed = [1, "hello", true];
+// inferred as (string | number | boolean)[]
+```
+
+---
+
+## **7. Inference in Objects**
+
+```ts
+let user = {
+  name: "Karan",
+  age: 22,
+};
+// inferred as { name: string; age: number }
+```
+
+Trying to assign incorrect types results in errors:
+
+```ts
+// user.age = "twenty"; // Error
+```
+
+---
+
+## **8. Best Common Type Inference**
+
+TypeScript tries to find a common type when multiple possibilities exist.
+
+```ts
+let data = [1, 2, null];
+// inferred as (number | null)[]
+```
+
+---
+
+## **9. Contextual Typing**
+
+TypeScript infers types based on context, such as event handlers or callbacks.
+
+### Example 1: Event handler
+
+```ts
+window.addEventListener("click", (event) => {
+  event.clientX; 
+  // event is inferred as MouseEvent
+});
+```
+
+### Example 2: Callback
+
+```ts
+["a", "b", "c"].forEach((item) => {
+  item.toUpperCase(); 
+  // item is inferred as string
+});
+```
+
+---
+
+## **10. When to Use Explicit Types Instead of Inference**
+
+Although inference is powerful, explicit types are better when:
+
+* The type is complex or not obvious
+* Public APIs and exported functions
+* Large codebases where clarity matters
+* When returning `Promise` or handling async code
+
+Example:
+
+```ts
+function fetchData(): Promise<string> {
+  return Promise.resolve("data");
+}
+```
+
+---
+
+## **Summary**
+
+TypeScript’s type inference:
+
+* Reduces the need for repetitive type annotations
+* Keeps code readable while maintaining safety
+* Helps catch errors early
+* Works with variables, functions, objects, and arrays
+
+Understanding how inference works is essential for writing clean and efficient TypeScript code.
