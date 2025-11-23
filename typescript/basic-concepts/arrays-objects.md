@@ -69,3 +69,130 @@ let pairs: [string, number][] = [
   ["B", 2],
 ];
 ```
+
+---
+
+# **2. Objects in TypeScript**
+
+Objects can be strongly typed using inline annotations, type aliases, or interfaces.
+
+---
+
+## **2.1 Inline Object Types**
+
+```ts
+let user: { name: string; age: number } = {
+  name: "Karan",
+  age: 22,
+};
+```
+
+---
+
+## **2.2 Optional Object Properties**
+
+Use `?` to mark optional fields.
+
+```ts
+let employee: {
+  name: string;
+  department?: string; 
+} = {
+  name: "Rahul",
+};
+```
+
+---
+
+## **2.3 Readonly Properties**
+
+Prevents modifying a property after initialization.
+
+```ts
+let product: {
+  readonly id: number;
+  name: string;
+} = {
+  id: 1,
+  name: "Book",
+};
+
+// product.id = 2; // Error
+```
+
+---
+
+## **2.4 Object Type with Union or Literal Types**
+
+```ts
+type Status = "active" | "inactive";
+
+let account: {
+  username: string;
+  status: Status;
+} = {
+  username: "karan",
+  status: "active",
+};
+```
+
+---
+
+## **2.5 Object with Index Signatures**
+
+Used when property names are unknown at compile time.
+
+```ts
+let salaries: {
+  [employee: string]: number;
+} = {
+  karan: 50000,
+  ravi: 60000,
+};
+```
+
+---
+
+## **2.6 Nested Objects**
+
+Objects can contain other typed objects.
+
+```ts
+let profile: {
+  name: string;
+  address: {
+    city: string;
+    pin: number;
+  };
+} = {
+  name: "Karan",
+  address: {
+    city: "Bhopal",
+    pin: 462001,
+  },
+};
+```
+
+---
+
+## **2.7 Combining Arrays and Objects**
+
+```ts
+let students: { id: number; name: string; passed: boolean }[] = [
+  { id: 1, name: "Karan", passed: true },
+  { id: 2, name: "Ravi", passed: false },
+];
+```
+
+---
+
+# **3. Summary**
+
+Arrays and objects become more reliable and maintainable with TypeScript due to:
+
+* Strict type rules
+* Optional and readonly properties
+* Support for unions, literals, and nested structures
+* Clear contracts for complex data
+
+Understanding typed arrays and objects is essential before moving into more advanced TypeScript concepts like interfaces and generics.
