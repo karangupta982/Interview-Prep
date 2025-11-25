@@ -65,3 +65,22 @@ function App() {
   );
 }
 ```
+
+---
+
+## **Component Re-rendering**
+
+A component re-renders when:
+
+* Its **state** changes
+* Its **props** change
+* Its **parent component** re-renders
+
+---
+
+## **Common Interview Questions**
+
+1. What is a component in React?
+2. Difference between functional and class components?
+3. Why must component names start with a capital letter?
+4. When does a component re-render?
