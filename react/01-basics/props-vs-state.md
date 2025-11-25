@@ -66,3 +66,31 @@ const [count, setCount] = useState(0);
 * Value changes based on user interaction
 * UI must update automatically
 * Component stores internal data
+
+---
+
+## **5. Example Showing Both**
+
+```jsx
+function Counter({ step }) {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(count + step)}>
+      Count: {count}
+    </button>
+  );
+}
+```
+
+`step` = **prop**
+`count` = **state**
+
+---
+
+## **Common Interview Questions**
+
+1. Difference between props and state?
+2. Are props mutable?
+3. What causes a component to re-render?
+4. Can we pass state as props?
