@@ -33,3 +33,24 @@ VDOM makes updates **fast** by:
 * Less direct DOM manipulation
 * Predictable and efficient re-renders
 * Smooth performance even in large apps
+
+---
+
+## **Virtual DOM vs Real DOM**
+
+| Virtual DOM           | Real DOM             |
+| --------------------- | -------------------- |
+| In-memory object      | Browser’s actual DOM |
+| Fast updates          | Slow updates         |
+| Updates minimal nodes | Re-renders whole UI  |
+| Efficient diffing     | Expensive operations |
+
+---
+
+## **Common Interview Questions**
+
+1. What is the Virtual DOM?
+2. How does React use the Virtual DOM?
+3. Why is Virtual DOM faster?
+4. Explain diffing and reconciliation in simple terms.
+
