@@ -49,3 +49,38 @@ deep.b.x = 20;
 
 console.log(obj.b.x);  // 10 → unchanged
 ```
+
+---
+
+# Differences (Interview-Ready Table)
+
+| Feature                              | Shallow Copy           | Deep Copy                 |
+| ------------------------------------ | ---------------------- | ------------------------- |
+| Copies top-level values              | Yes                    | Yes                       |
+| Copies nested objects                | No (copies references) | Yes (creates new objects) |
+| Memory independent?                  | No                     | Yes                       |
+| Original affected by nested changes? | Yes                    | No                        |
+| Performance                          | Faster                 | Slower                    |
+
+---
+
+# Common Methods
+
+### **Shallow Copy**
+
+* `Object.assign({}, obj)`
+* `{ ...obj }` (spread operator)
+* `Array.prototype.slice()`
+* `Array.prototype.concat()`
+
+### **Deep Copy**
+
+* `JSON.parse(JSON.stringify(obj))`
+* `structuredClone(obj)` (Modern JS)
+* Third-party libraries: **Lodash cloneDeep**
+
+---
+
+# One-Line Interview Answer
+
+**Shallow copy copies only top-level properties and shares nested references, while deep copy creates a completely independent clone of all levels, including nested objects.**
