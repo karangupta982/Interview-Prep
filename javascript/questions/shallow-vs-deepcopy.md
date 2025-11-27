@@ -84,3 +84,106 @@ console.log(obj.b.x);  // 10 → unchanged
 # One-Line Interview Answer
 
 **Shallow copy copies only top-level properties and shares nested references, while deep copy creates a completely independent clone of all levels, including nested objects.**
+
+---
+
+# 1. Shallow Copy With Arrays
+
+### Example
+
+```js
+const arr = [1, [10, 20]];
+
+const shallow = [...arr]; // shallow copy
+
+shallow[1][0] = 99;
+
+console.log(arr[1][0]);   // 99 → original changed
+```
+
+### Why?
+
+Because the inner array `[10, 20]` is **referenced**, not copied.
+
+---
+
+# Memory Diagram (Shallow Copy)
+
+```
+arr ---------> [ 1 ,  [10,20] ]
+                     ↑
+shallow ----> [ 1 ,   same reference ]
+```
+
+Both arrays share the same inner array.
+
+---
+
+# 2. Deep Copy With Arrays
+
+### Example
+
+```js
+const arr = [1, [10, 20]];
+
+const deep = structuredClone(arr); // deep copy (modern JS)
+
+deep[1][0] = 99;
+
+console.log(arr[1][0]);  // 10 → unaffected
+```
+
+---
+
+# Memory Diagram (Deep Copy)
+
+```
+arr ---------> [ 1 ,  [10,20] ]
+
+deep --------> [ 1 ,  [10,20] ]   // completely new copy
+```
+
+Here, the inner array is also duplicated.
+
+---
+
+# 3. When JSON Deep Copy Fails (Real Interview Question)
+
+Using:
+
+```js
+JSON.parse(JSON.stringify(object))
+```
+
+Fails when:
+
+* functions inside object
+* `undefined`
+* `Date` objects
+* `Map`, `Set`
+* circular references
+
+Example:
+
+```js
+const obj = { a: 1, b: undefined, c: new Date() };
+
+console.log(JSON.parse(JSON.stringify(obj)));
+// Output: { a: 1, c: "2025-11-26T..." }  // undefined lost, date becomes string
+```
+
+---
+
+# 4. Best Interview Summary
+
+### **Shallow Copy**
+
+* Copies top-level values.
+* Nested objects/arrays share reference.
+* Examples: `spread (...)`, `Object.assign()`, `slice()`, `concat()`.
+
+### **Deep Copy**
+
+* Recursively copies everything.
+* No shared reference.
+* Examples: `structuredClone()`, `JSON.parse(JSON.stringify())`, `lodash.cloneDeep`.
