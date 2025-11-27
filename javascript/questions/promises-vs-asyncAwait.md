@@ -60,3 +60,20 @@ async function getData() {
 
 * **Promises:** `.catch()` handles errors.
 * **async/await:** `try...catch` blocks handle errors more cleanly.
+
+### 3. **Chaining**
+
+* **Promises:** You chain multiple `.then()` calls.
+* **async/await:** You simply `await` multiple statements line by line.
+
+### 4. **Under the Hood**
+
+* **Promises are the foundation**.
+* **async/await still uses Promises internally**.
+
+---
+
+# Summary
+
+**Promises represent the eventual completion of an async operation and use `.then()`/`.catch()`.
+`async/await` is a cleaner syntax built on top of Promises, making asynchronous code look synchronous and easier to maintain.**
