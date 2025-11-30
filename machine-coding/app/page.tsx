@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Accordion from "./components/accordion"
 
 export default function Home() {
   return (
-    <>
-    Machine coding round preparation
-    </>
-  );
+    <div className="">
+      <Accordion />
+    </div>
+    );
 }
