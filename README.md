@@ -105,15 +105,3 @@ Each contribution should focus on **accuracy, clarity, and educational value**.
 
 The long-term vision of this repository is to build an open, evolving knowledge base for interview preparation — a source that grows with community input and stays relevant to modern development practices.
 It aims to be a reference point for learners who prefer a structured, example-driven approach to mastering core technologies.
-
----
-
-## Maintainer
-
-**Karan Gupta**
-B.Tech in Computer Science and Engineering
-MERN Stack Developer
-
-GitHub: [Link](https://github.com/karangupta982)
-LinkedIn: [Link](https://www.linkedin.com/in/karan-gupta10/)
-
