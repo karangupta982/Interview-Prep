@@ -1,5 +1,3 @@
-# tree.md
-
 # 1. Introduction
 
 A **tree** is a **hierarchical, non-linear data structure** composed of nodes connected by edges.
