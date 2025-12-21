@@ -5,7 +5,7 @@
 
 ---
 
-## 1. High Learning Curve (You are Correct)
+## 1. High Learning Curve
 
 ### Why It Happens
 
